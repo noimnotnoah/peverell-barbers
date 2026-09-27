@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peverell Barbers | Plymouth</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f5f0eb; color: #3d3530; overflow-x: hidden; }
+
+        /* Hero: warm beige, right-aligned text, image split */
+        .hero {
+            min-height: 90vh; display: grid; grid-template-columns: 3fr 2fr;
+            background: #f5f0eb; position: relative;
+        }
+        .hero-left {
+            padding: 5rem 4rem 5rem 6rem; display: flex; flex-direction: column;
+            justify-content: center; position: relative; z-index: 2;
+        }
+        .hero-left .street { font-size: 0.8rem; color: #8a7a6a; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .hero-left h1 {
+            font-family: 'Source Serif 4', serif; font-size: 4.5rem; color: #3d3530;
+            line-height: 1.15; font-weight: 700;
+        }
+        .hero-left h1 .warm { color: #b8865a; }
+        .hero-left .intro {
+            font-size: 1.1rem; color: #6a5a50; line-height: 1.7; max-width: 420px;
+            margin: 1.5rem 0 2.5rem; font-weight: 400;
+        }
+        .hero-right {
+            background: url('https://images.unsplash.com/photo-1585747861115-93e4e8ef500e?w=700&q=80') center/cover;
+            position: relative;
+        }
+        .hero-right .tint { position: absolute; inset: 0; background: rgba(245,240,235,.15); }
+
+        .btn-warm {
+            display: inline-block; padding: 1rem 2.5rem; background: #b8865a; color: #fff;
+            text-decoration: none; font-weight: 600; font-size: 0.95rem;
+            transition: all .3s; border: none; cursor: pointer;
+        }
+        .btn-warm:hover { background: #a06e48; transform: translateY(-2px); box-shadow: 0 8px 25px rgba(184,134,90,.3); }
+        .btn-warm-outline {
+            display: inline-block; padding: 1rem 2.5rem; border: 2px solid #b8865a; color: #b8865a;
+            text-decoration: none; font-weight: 600; font-size: 0.95rem; margin-left: 1rem;
+            transition: all .3s;
+        }
+        .btn-warm-outline:hover { background: #b8865a; color: #fff; }
+
+        /* Warm divider */
+        .warm-divider { height: 4px; background: linear-gradient(90deg, #b8865a, #d4a574, #b8865a); width: 80px; margin: 1.5rem 0; }
+
+        /* About: storytelling single column */
+        .about-section { padding: 5rem 6rem; background: #eee7e0; text-align: center; }
+        .about-section h2 { font-family: 'Source Serif 4', serif; font-size: 2.8rem; color: #3d3530; }
+        .about-section h2 .warm { color: #b8865a; }
+        .about-section > p { max-width: 650px; margin: 1.5rem auto 0; color: #6a5a50; line-height: 1.9; font-size: 1.05rem; }
+        .about-section .sig { margin-top: 2rem; font-family: 'Source Serif 4', serif; font-style: italic; color: #b8865a; font-size: 1.1rem; }
+
+        /* Services: stacked warm cards */
+        .services { padding: 5rem 6rem; background: #f5f0eb; }
+        .services h2 { font-family: 'Source Serif 4', serif; font-size: 2.5rem; text-align: center; margin-bottom: 3rem; }
+        .services h2 .warm { color: #b8865a; }
+        .service-stack { max-width: 700px; margin: 0 auto; }
+        .service-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem; border-bottom: 1px solid #e0d6cc; transition: all .2s;
+        }
+        .service-row:last-child { border-bottom: none; }
+        .service-row:hover { background: #eee7e0; padding-left: 2rem; }
+        .service-row .info h3 { font-family: 'Source Serif 4', serif; font-size: 1.2rem; color: #3d3530; }
+        .service-row .info p { color: #8a7a6a; font-size: 0.9rem; margin-top: 0.2rem; }
+        .service-row .price { font-family: 'Source Serif 4', serif; font-size: 1.4rem; color: #b8865a; font-weight: 700; }
+
+        /* Quote banner */
+        .quote-banner {
+            padding: 4rem; background: #b8865a; text-align: center; color: #fff;
+        }
+        .quote-banner blockquote { font-family: 'Source Serif 4', serif; font-size: 1.8rem; font-style: italic; max-width: 600px; margin: 0 auto; line-height: 1.4; }
+
+        /* Team: simple horizontal */
+        .team { padding: 5rem 6rem; background: #eee7e0; }
+        .team h2 { font-family: 'Source Serif 4', serif; font-size: 2.5rem; text-align: center; margin-bottom: 3rem; }
+        .team h2 .warm { color: #b8865a; }
+        .team-row { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .team-member { text-align: center; }
+        .team-member img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 0.8rem; border: 3px solid #d4a574; }
+        .team-member h3 { font-family: 'Source Serif 4', serif; color: #3d3530; }
+        .team-member p { color: #8a7a6a; font-size: 0.85rem; }
+
+        /* Contact: warm tones */
+        .contact { padding: 5rem 6rem; background: #f5f0eb; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .contact h2 { font-family: 'Source Serif 4', serif; font-size: 2.5rem; color: #3d3530; }
+        .contact h2 .warm { color: #b8865a; }
+        .contact-details p { margin-bottom: 0.8rem; color: #6a5a50; }
+        .contact-details a { color: #b8865a; text-decoration: none; font-weight: 500; }
+        .contact-details a:hover { text-decoration: underline; }
+        .contact-image img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; }
+
+        footer { padding: 2rem; text-align: center; background: #3d3530; color: #b5a59a; font-size: 0.85rem; }
+
+        @media (max-width:768px){
+            .hero { grid-template-columns: 1fr; }
+            .hero-left { padding: 3rem 1.5rem; }
+            .hero-right { min-height: 40vh; }
+            .hero-left h1 { font-size: 2.8rem; }
+            .about-section, .services, .team, .contact { padding: 3rem 1.5rem; }
+            .contact { grid-template-columns: 1fr; }
+            .btn-warm-outline { margin-left: 0; margin-top: 0.8rem; display: inline-block; }
+            .service-row { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-left">
+            <div class="street">Peverell · Plymouth</div>
+            <h1>Peverell<br><span class="warm">Barbers</span></h1>
+            <div class="warm-divider"></div>
+            <p class="intro">Family barbering since 1995. Warm welcomes, great cuts, and a proper chinwag — come as you are.</p>
+            <div>
+                <a href="#book" class="btn-warm">Book Now</a>
+                <a href="#services" class="btn-warm-outline">Our Prices</a>
+            </div>
+        </div>
+        <div class="hero-right"><div class="tint"></div></div>
+    </section>
+
+    <section class="about-section">
+        <h2>A Local <span class="warm">Tradition</span></h2>
+        <p>Peverell Barbers has been part of the neighbourhood for three generations. We're the shop where dads bring their sons, where the chat is as good as the cut, and where everyone knows your name — or at least your usual style.</p>
+        <p>No appointments necessary — just walk in, take a seat, and leave looking your best.</p>
+        <div class="sig">— The Peverell Team</div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our <span class="warm">Services</span></h2>
+        <div class="service-stack">
+            <div class="service-row">
+                <div class="info"><h3>Adult Cut</h3><p>Wash, cut & style with hot towel</p></div>
+                <div class="price">£15</div>
+            </div>
+            <div class="service-row">
+                <div class="info"><h3>Senior Cut</h3><p>Over 65s — same care, less cost</p></div>
+                <div class="price">£12</div>
+            </div>
+            <div class="service-row">
+                <div class="info"><h3>Kids Cut</h3><p>Ages under 12 — patient & fun</p></div>
+                <div class="price">£9</div>
+            </div>
+            <div class="service-row">
+                <div class="info"><h3>Beard Trim</h3><p>Shape, oil & hot towel finish</p></div>
+                <div class="price">£11</div>
+            </div>
+            <div class="service-row">
+                <div class="info"><h3>Cut & Beard</h3><p>Full head & beard — best value</p></div>
+                <div class="price">£23</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quote-banner">
+        <blockquote>"The best barbers are the ones who make you feel at home. We've been doing that for nearly 30 years."</blockquote>
+    </section>
+
+    <section class="team" id="team">
+        <h2>Meet the <span class="warm">Team</span></h2>
+        <div class="team-row">
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Mark" loading="lazy" />
+                <h3>Mark</h3>
+                <p>Owner · 28 years</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80" alt="Dave" loading="lazy" />
+                <h3>Dave</h3>
+                <p>Senior Barber · 15 years</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80" alt="Liam" loading="lazy" />
+                <h3>Liam</h3>
+                <p>Junior Barber · 4 years</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-details">
+            <h2>Get in <span class="warm">Touch</span></h2>
+            <p style="margin-top:1.5rem;"><strong>Peverell Barbers</strong></p>
+            <p>116 Peverell Park Road, Peverell, Plymouth, PL3 4JW</p>
+            <p>✆ <a href="tel:+441752345678">01752 345678</a></p>
+            <p>✉ <a href="mailto:peverellbarbers@yahoo.com">peverellbarbers@yahoo.com</a></p>
+            <p style="margin-top:1rem;color:#b8865a;font-weight:600;">Tue–Fri 8:30am–5:30pm · Sat 8am–4pm · Sun–Mon Closed</p>
+            <div style="margin-top:1.5rem;"><a href="#" class="btn-warm">Book Online</a></div>
+        </div>
+        <div class="contact-image">
+            <img src="https://images.unsplash.com/photo-1599351430140-5e3e0e0e0e0e?w=600&q=80" alt="Peverell Barbers interior" loading="lazy" />
+        </div>
+    </section>
+
+    <footer>&copy; 2026 Peverell Barbers · Peverell, Plymouth · Family barbering since 1995.</footer>
+</body>
+</html>
